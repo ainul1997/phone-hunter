@@ -62,9 +62,6 @@ const displaySearchResult = status => {
             searchResult.appendChild(div);
         })
     };
-
-
-
 }
 const phoneLoadByName = data => {
 
@@ -82,13 +79,14 @@ const phoneLoadByNa = data => {
     fetch(url)
         .then(res => res.json())
         .then(phone => displayPhoneDetail(phone.data.mainFeatures));
-    console.log(displayPhoneDetail);
+    // console.log(displayPhoneDetail);
 }
 const displayPhoneDetail = phoneDetail => {
     const displayField = document.getElementById('ditailsDisplay')
     const phoneDetailDiv = document.createElement('div');
+
     // console.log(countryDiv);
-    phoneDetailDiv.innerHTML = `
+    displayField.innerHTML = `
     <div class="card mb-3" style="max-width: 540px;">
 <div class="row g-0">
     <div class="col-md-4">
@@ -106,7 +104,9 @@ const displayPhoneDetail = phoneDetail => {
 </div> 
 
     `;
-    displayField.appendChild(phoneDetailDiv)
+    phoneDetailDiv.appendChild(phoneDetail);
+
 
 }
+
 
