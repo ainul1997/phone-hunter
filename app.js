@@ -1,8 +1,6 @@
-
+// Display Document
 
 document.getElementById("write-alart").style.display = "none";
-
-
 document.getElementById("noFound-alart").style.display = "none";
 
 const searchResult = document.getElementById("search-result");
@@ -63,6 +61,7 @@ const displaySearchResult = status => {
         })
     };
 }
+//PhoneLoaded
 const phoneLoadByName = data => {
 
     // console.log(country); 
