@@ -66,32 +66,6 @@ const displaySearchResult = status => {
 
 
 }
-
-const displayPhoneDetail = country => {
-    const displayField = document.getElementById('ditailsDisplay')
-    const countryDiv = document.createElement('div');
-    // console.log(countryDiv);
-    countryDiv.innerHTML = `
-    <div class="card mb-3" style="max-width: 540px;">
-<div class="row g-0">
-    <div class="col-md-4">
-        <img src="${country.image}" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-        <div class="card-body">
-            <h5 class="card-title">${country.slug}</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                additional content. This content is a little bit longer.</p>
-            <p class="card-text"></p>
-        </div>
-    </div>
-</div>
-</div> 
-
-    `;
-    displayField.appendChild(countryDiv)
-
-}
 const phoneLoadByName = data => {
 
     // console.log(country); 
@@ -99,4 +73,40 @@ const phoneLoadByName = data => {
     fetch(url)
         .then(res => res.json())
         .then(phone => displayPhoneDetail(phone.data));
+    // console.log(phoneLoadByName);
 }
+const phoneLoadByNa = data => {
+
+    // console.log(country); 
+    url = `https://openapi.programming-hero.com/api/phone/${data}`
+    fetch(url)
+        .then(res => res.json())
+        .then(phone => displayPhoneDetail(phone.data.mainFeatures));
+    console.log(displayPhoneDetail);
+}
+const displayPhoneDetail = phoneDetail => {
+    const displayField = document.getElementById('ditailsDisplay')
+    const phoneDetailDiv = document.createElement('div');
+    // console.log(countryDiv);
+    phoneDetailDiv.innerHTML = `
+    <div class="card mb-3" style="max-width: 540px;">
+<div class="row g-0">
+    <div class="col-md-4">
+        <img  src="${phoneDetail.image}" class="img-fluid rounded-start d-flex justify-content-center" alt="...">
+    </div>
+    <div class="col-md-8">
+        <div class="card-body">
+            <h5 class="card-title">${phoneDetail.slug}</h5>
+            <p class="card-text">${phoneDetail.name}</p>
+            <p class="card-text">${phoneDetail.releaseDate}</p>
+            <p class="card-text">${phoneDetail.mainFeatures.storage}</p>
+        </div>
+    </div>
+</div>
+</div> 
+
+    `;
+    displayField.appendChild(phoneDetailDiv)
+
+}
+
